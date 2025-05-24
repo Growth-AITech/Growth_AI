@@ -1,10 +1,10 @@
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
-from .prompt_builder import construir_prompt
+from prompt_builder import construir_prompt
 
 load_dotenv()
-api_key = os.getenv("together_api_key")
+api_key = os.getenv("togetherApiKey")
 
 client = OpenAI(api_key=api_key, base_url="https://api.together.xyz/v1")
 

@@ -5,23 +5,26 @@ Description: "FastAPI con LLM en Lambda"
 Globals:
   Function:
     Timeout: 60
-    MemorySize: 1024
+    MemorySize: 250
 
 Resources:
   FastAPIFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: fastapi-llm
-      CodeUri: .
-      Handler: app.main:app
+      CodeUri: app
+      Handler: main.handler
       Runtime: python3.13
-      Architectures: [x86_64]
       Events:
         Api:
           Type: Api
           Properties:
             Path: /{proxy+}
             Method: ANY
+      Environment:
+        Variables:
+          togetherApiKey: 152cda2952b7febf574eef62d60cecc33a896b5a61c9cce7dc9e71c7ff50acd3
+
 
 Outputs:
   ApiUrl:
